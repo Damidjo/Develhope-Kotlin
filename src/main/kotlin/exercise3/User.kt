@@ -1,27 +1,24 @@
 package exercise3
+    sealed class User {
+        abstract val id: String
+        abstract val passwordOrEmail: String?
 
-sealed class User(open val id : String) {
-    data class Email(override val id : String) : User("1")
-    data class Facebook(override val id : String) : User("1")
-    data class Google(override val id : String) : User("1")
+        data class Email(override val id: String, override val passwordOrEmail: String?) : User()
+        data class Facebook(override val id: String, val token: String) : User() {
+            override val passwordOrEmail: String?
+                get() = null
+        }
 
-    class Method {
-        fun text(user: User): String {
-            return when (user) {
-                is Email -> {
-                    "Default Email user: ${user.id}"
-                }
+        data class Google(override val id: String, override val passwordOrEmail: String?) : User()
 
-                is Facebook -> {
-                    "Facebook user: ${user.id}"
-                }
-
-                is Google -> {
-                    "Google user: ${user.id}"
-                }
+        fun toPrintableString(): String {
+            return when (this) {
+                is Email -> "Email user with id $id and email ${passwordOrEmail ?: "not set"}"
+                is Facebook -> "Facebook user with id $id and token $token"
+                is Google -> "Google user with id $id and password ${passwordOrEmail ?: "not set"}"
             }
         }
     }
-}
+
 
 
