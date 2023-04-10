@@ -1,6 +1,6 @@
 package exercise4
 fun main() {
-    val int = listOf(1 to 5)
+    val int = listOf(1,2,3,4,5)
 
     val str = int.map {it.toString()}
 
