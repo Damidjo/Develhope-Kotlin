@@ -1,8 +1,12 @@
 package exercise2.interfaces
 
+import Child
+import Child2
+
 fun main() {
-    val hi = ChildClass()
-    hi.sayHi()
-    val hi2 = ChildClass2()
-    hi2.sayHi()
+    val c = Child()
+    val c2 = Child2()
+    c.speak()
+    c2.speak()
+
 }

@@ -5,10 +5,11 @@ that override one method - one using inheritance and another using interfaces. *
 
 
 fun main() {
-    val cc = ChildClass()
-    cc.sayHi()
-    val cc2 = ChildClass2()
-    cc2.sayHi()
+    val c = Child()
+    val c2 = Child2()
+    c.speak()
+    c2.speak()
+
 }
 
 
